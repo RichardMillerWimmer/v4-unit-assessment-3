@@ -3,11 +3,14 @@ import React from 'react';
 function BookList(props) {
 
 
+    function onClickSelect(value) {
+        props.addToShelf(value)
+    }
 
     let mappedBooks = props.books.map((elem, index) => {
         return (
             <div key={index} book={elem}>
-                <img onClick={props.addToshelf} src={elem.img} alt={props.books.title} />
+                <img onClick={() => onClickSelect(elem.title)} src={elem.img} alt={props.books.title} />
                 <p>{elem.title}</p>
                 <p>{elem.author}</p>
             </div>
@@ -18,6 +21,7 @@ function BookList(props) {
 
     return (
         <section>
+            <h2>Booklist</h2>
             {mappedBooks}
         </section>
     )

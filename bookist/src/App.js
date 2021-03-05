@@ -26,16 +26,16 @@ class App extends Component {
 
   }
 
-  clearSelf() {
-
-  }
+  // clearShelf() {
+  //   this.setState({ shelf: [] })
+  // }
 
   filterBooks() {
 
   }
 
   reset() {
-
+    this.setState({})
   }
 
   render() {
@@ -44,7 +44,7 @@ class App extends Component {
 
         <Header />
         <SearchBar filterBooks={this.filterBooks} />
-        <Shelf self={this.state.shelf} />
+        <Shelf self={this.state.shelf} clearShelf={this.clearShelf} />
         <BookList addToShelf={this.addToShelf} books={this.state.books} />
       </div>
     );

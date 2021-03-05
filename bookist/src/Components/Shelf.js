@@ -5,7 +5,7 @@ function Shelf(props) {
     return (
         <section>
             <h3>Your Shelf</h3>
-            <button>clear shelf</button>
+            {/* <button onClick={props.clearShelf()} >clear shelf</button> */}
             <div>
 
             </div>
