@@ -31,7 +31,14 @@ class SearchBar extends Component {
 
 
     render() {
-        console.log(this.state.userInput)
+
+        let inputContent = this.state.userInput
+        const clearButtonCheck = () => {
+            if (inputContent !== '') {
+                return <button className='btn' onClick={() => this.handleClear()}>clear search</button>
+            }
+        }
+        // console.log(this.state.userInput)
         // let currentUserInput = this.state.userInput
 
         return (
@@ -40,7 +47,8 @@ class SearchBar extends Component {
                 <div className='inputRow'>
                     <input className='input' placeholder='search for books' value={this.state.userInput} onChange={event => this.handleChange(event.target.value)}></input>
                     <button className='btn' onClick={() => this.handleClick(this.state.userInput)}>search</button>
-                    <button className='btn' onClick={() => this.handleClear()}>clear search</button>
+                    {(clearButtonCheck())}
+                    {/* <button className='btn' onClick={() => this.handleClear()}>clear search</button> */}
                 </div>
             </section>
         )
