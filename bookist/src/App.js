@@ -16,6 +16,8 @@ class App extends Component {
     }
     this.addToShelf = this.addToShelf.bind(this)
     this.filterBooks = this.filterBooks.bind(this)
+    this.clearShelf = this.clearShelf.bind(this)
+    this.reset = this.reset.bind(this)
   }
 
   // console.log(this.state.data)
@@ -23,19 +25,30 @@ class App extends Component {
     let addingBookArr = this.state.shelf
     addingBookArr.push(selectedBook)
     this.setState({ shelf: addingBookArr })
-
   }
 
-  // clearShelf() {
-  //   this.setState({ shelf: [] })
-  // }
+  clearShelf() {
+    this.setState({ shelf: [] })
+  }
 
-  filterBooks() {
+  filterBooks(userInput) {
+    console.log(userInput)
 
+    let filteredBooks = []
+    this.state.books.filter((elem) => {
+      let elemTitle = elem.title.toLocaleLowerCase()
+      let elemAuthor = elem.author.toLocaleLowerCase()
+      if (elemTitle.includes(userInput) || elemAuthor.includes(userInput)) {
+        return filteredBooks.push(elem)
+      }
+    })
+    console.log(filteredBooks)
+    console.log()
+    this.setState({ books: filteredBooks })
   }
 
   reset() {
-    this.setState({})
+    this.setState({ books: data })
   }
 
   render() {
@@ -43,8 +56,8 @@ class App extends Component {
       <div className="App" >
 
         <Header />
-        <SearchBar filterBooks={this.filterBooks} />
-        <Shelf self={this.state.shelf} clearShelf={this.clearShelf} />
+        <SearchBar filterBooks={this.filterBooks} reset={this.reset} />
+        <Shelf shelf={this.state.shelf} clearShelf={this.clearShelf} />
         <BookList addToShelf={this.addToShelf} books={this.state.books} />
       </div>
     );

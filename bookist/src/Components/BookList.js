@@ -7,10 +7,10 @@ function BookList(props) {
         props.addToShelf(value)
     }
 
-    let mappedBooks = props.books.map((elem, index) => {
+    let mappedBooks = props.books.map((elem) => {
         return (
-            <div key={index} book={elem}>
-                <img onClick={() => onClickSelect(elem.title)} src={elem.img} alt={props.books.title} />
+            <div key={elem.id} book={elem}>
+                <img onClick={() => onClickSelect(elem)} src={elem.img} alt={props.books.title} />
                 <p>{elem.title}</p>
                 <p>{elem.author}</p>
             </div>

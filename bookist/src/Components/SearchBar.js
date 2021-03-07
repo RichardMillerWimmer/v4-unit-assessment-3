@@ -7,28 +7,38 @@ class SearchBar extends Component {
         this.state = {
             userInput: ''
         }
+        this.handleChange = this.handleChange.bind(this)
+        this.handleClick = this.handleClick.bind(this)
+        this.handleClear = this.handleClear.bind(this)
     }
 
     handleChange(value) {
         this.setState({ userInput: value })
+        // console.log(this.state.userInput)
     }
 
-    handleClick(userInput) {
-        this.props.filterBooks(userInput)
+    handleClick(currentUserInput) {
+        this.props.filterBooks(currentUserInput)
         this.setState({ userInput: '' })
+        console.log(this.state.userInput)
     }
 
     handleClear() {
         this.setState({ userInput: '' })
+        this.props.reset()
+        // console.log(this.state.userInput)
     }
 
 
     render() {
+        console.log(this.state.userInput)
+        // let currentUserInput = this.state.userInput
+
         return (
             <section>
                 <h4>Search Bar</h4>
                 <div>
-                    <input placeholder='search for books' onChange={event => this.handleChange(event.target.value)}></input>
+                    <input placeholder='search for books' value={this.state.userInput} onChange={event => this.handleChange(event.target.value)}></input>
                     <button onClick={() => this.handleClick(this.state.userInput)}>search</button>
                     <button onClick={() => this.handleClear()}>clear search</button>
                 </div>
