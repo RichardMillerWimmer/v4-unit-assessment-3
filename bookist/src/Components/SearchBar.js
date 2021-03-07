@@ -1,11 +1,13 @@
 
 import React, { Component } from "react";
+import data from '../data'
 
 class SearchBar extends Component {
     constructor() {
         super();
         this.state = {
-            userInput: ''
+            userInput: '',
+            data: data
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleClick = this.handleClick.bind(this)
@@ -34,7 +36,7 @@ class SearchBar extends Component {
 
         let inputContent = this.state.userInput
         const clearButtonCheck = () => {
-            if (inputContent !== '') {
+            if (inputContent !== '' || this.props.books.length < data.length) {
                 return <button className='btn' onClick={() => this.handleClear()}>clear search</button>
             }
         }
@@ -46,6 +48,7 @@ class SearchBar extends Component {
                 {/* <h4 className='searchBar'>Search Bar</h4> */}
                 <div className='inputRow'>
                     <input className='input' placeholder='search for books' value={this.state.userInput} onChange={event => this.handleChange(event.target.value)}></input>
+
                     <button className='btn' onClick={() => this.handleClick(this.state.userInput)}>search</button>
                     {(clearButtonCheck())}
                     {/* <button className='btn' onClick={() => this.handleClear()}>clear search</button> */}

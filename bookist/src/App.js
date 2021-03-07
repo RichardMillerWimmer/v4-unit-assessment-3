@@ -24,6 +24,8 @@ class App extends Component {
   addToShelf(selectedBook) {
     let addingBookArr = this.state.shelf
     addingBookArr.push(selectedBook)
+    let bookSet = new Set(addingBookArr)
+    addingBookArr = [...bookSet]
     this.setState({ shelf: addingBookArr })
   }
 
@@ -56,7 +58,7 @@ class App extends Component {
       <div className="App" >
 
         <Header />
-        <SearchBar filterBooks={this.filterBooks} reset={this.reset} />
+        <SearchBar filterBooks={this.filterBooks} reset={this.reset} books={this.state.books} />
         <Shelf shelf={this.state.shelf} clearShelf={this.clearShelf} />
         <BookList addToShelf={this.addToShelf} books={this.state.books} />
       </div>
