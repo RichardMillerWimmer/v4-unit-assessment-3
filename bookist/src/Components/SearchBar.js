@@ -36,11 +36,11 @@ class SearchBar extends Component {
 
         return (
             <section>
-                <h4>Search Bar</h4>
-                <div>
-                    <input placeholder='search for books' value={this.state.userInput} onChange={event => this.handleChange(event.target.value)}></input>
-                    <button onClick={() => this.handleClick(this.state.userInput)}>search</button>
-                    <button onClick={() => this.handleClear()}>clear search</button>
+                {/* <h4 className='searchBar'>Search Bar</h4> */}
+                <div className='inputRow'>
+                    <input className='input' placeholder='search for books' value={this.state.userInput} onChange={event => this.handleChange(event.target.value)}></input>
+                    <button className='btn' onClick={() => this.handleClick(this.state.userInput)}>search</button>
+                    <button className='btn' onClick={() => this.handleClear()}>clear search</button>
                 </div>
             </section>
         )

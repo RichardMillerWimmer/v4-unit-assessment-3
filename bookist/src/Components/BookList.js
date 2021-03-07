@@ -9,7 +9,7 @@ function BookList(props) {
 
     let mappedBooks = props.books.map((elem) => {
         return (
-            <div key={elem.id} book={elem}>
+            <div className='bookBox' key={elem.id} book={elem}>
                 <img onClick={() => onClickSelect(elem)} src={elem.img} alt={props.books.title} />
                 <p>{elem.title}</p>
                 <p>{elem.author}</p>
@@ -20,8 +20,7 @@ function BookList(props) {
 
 
     return (
-        <section>
-            <h2>Booklist</h2>
+        <section className='bookList'>
             {mappedBooks}
         </section>
     )

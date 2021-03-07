@@ -5,6 +5,7 @@ function Header(props) {
     return (
         <header>
             <h1>bookist</h1>
+            <div className='gradient'></div>
         </header>
     )
 };
